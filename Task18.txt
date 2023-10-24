@@ -1,0 +1,90 @@
+
+
+1.
+package letcodeSathish;
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class LanchChrome {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+	WebDriver driver=new ChromeDriver();
+	
+	driver.get("https://www.facebook.com/");
+	
+	driver.manage().window().maximize();
+	
+	Thread.sleep(50000);
+	
+	driver.findElement(By.xpath("//a[@class='_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy']")).click();
+	
+	driver.findElement(By.name("firstname")).sendKeys("Test");
+	
+	driver.findElement(By.name("lastname")).sendKeys("User");
+	
+	driver.findElement(By.xpath("//input[@name='reg_email__']")).sendKeys("testuser@gmail.com");
+	
+	
+	driver.findElement(By.xpath("//input[@name='reg_passwd__']")).sendKeys("$athish145");
+	
+	WebElement day=driver.findElement(By.id("day"));
+	
+	WebElement month=driver.findElement(By.id("month"));
+	WebElement year=driver.findElement(By.id("year"));
+	
+	Select select=new Select(day);
+	select.selectByVisibleText("11");
+	
+	Select select1=new Select(month);
+	select1.selectByVisibleText("May");
+	
+	Select select2=new Select(year);
+	select2.selectByVisibleText("1985");
+	
+	driver.findElement(By.xpath("//label[@for='u_s_5_9a']")).click();
+	
+	driver.findElement(By.xpath("//button[@name='websubmit']")).click();
+	
+	driver.quit();
+	
+	
+	}
+
+}
+
+
+
+2.
+package letcodeSathish;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class DragandDrop {
+
+   WebDriver driver=new ChromeDriver();
+
+      driver.get("https://jqueryui.com/droppable/");
+
+      driver.manage().window().maximize();
+      
+      driver.switchTo().frame(0);
+      
+      WebElement scr=driver.findElement(By.id("draggale"));
+      WebElement dest=driver.findElement(By.id("droppable"));
+      
+      Actions Builders=new Actions(driver);
+      Builders.dragAndDrop(scr,dest).perform();
+       System.out.println(dest.getCssValue("background"));
+       
+}
